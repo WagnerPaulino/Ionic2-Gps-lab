@@ -1,5 +1,8 @@
 {
   "name": "ionic2-Gps-lab",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
