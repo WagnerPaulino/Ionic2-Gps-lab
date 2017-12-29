@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     Geolocation,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
