@@ -5,10 +5,7 @@ import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker
+  GoogleMapOptions
  } from '@ionic-native/google-maps';
  
 
@@ -22,10 +19,12 @@ export class HomePage {
   latitude = 0;
   longitude = 0;
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation, private googleMaps: GoogleMaps) {
+  constructor(public navCtrl: NavController, private geolocation: Geolocation) {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
+      console.log("latitude: "+this.latitude);
+      console.log("longitude: "+this.longitude);
      }).catch((error) => {
        console.log(error);
      });
@@ -36,7 +35,6 @@ export class HomePage {
    }
  
   loadMap() {
-    let element = document.getElementById('map_canvas');
      let mapOptions: GoogleMapOptions = {
        camera: {
          target: {
@@ -49,13 +47,11 @@ export class HomePage {
      };
      
      this.map = GoogleMaps.create('map_canvas', mapOptions);
- 
-     // Wait the MAP_READY before using any methods.
+
      this.map.one(GoogleMapsEvent.MAP_READY)
        .then(() => {
          console.log('Map is ready!');
  
-         // Now you can use all methods safely.
          this.map.addMarker({
              title: 'Ionic',
              icon: 'blue',
