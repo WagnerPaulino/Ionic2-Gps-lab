@@ -18,6 +18,8 @@ export class HomePage {
   map: GoogleMap;
   latitude = 0;
   longitude = 0;
+  status = '';
+  evento = ''; 
 
   constructor(public navCtrl: NavController, private geolocation: Geolocation) {
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -50,7 +52,7 @@ export class HomePage {
 
      this.map.one(GoogleMapsEvent.MAP_READY)
        .then(() => {
-         console.log('Map is ready!');
+         this.status = 'Map está funcionando!';
  
          this.map.addMarker({
              title: 'Ionic',
@@ -64,10 +66,14 @@ export class HomePage {
            .then(marker => {
              marker.on(GoogleMapsEvent.MARKER_CLICK)
                .subscribe(() => {
-                 alert('clicked');
+                 this.evento = "Clicado";
                });
+           }).catch((e)=>{
+             this.evento = e;
            });
  
+       }).catch((e)=>{
+         this.status = "Erro ao iniciar o mapa: "+e;
        });
    }
 
