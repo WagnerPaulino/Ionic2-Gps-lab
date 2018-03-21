@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
+
 @NgModule({
   declarations: [
     MyApp,
