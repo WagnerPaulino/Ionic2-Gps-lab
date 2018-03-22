@@ -27,14 +27,11 @@ export class HomePage {
       this.longitude = resp.coords.longitude;
       console.log("latitude: "+this.latitude);
       console.log("longitude: "+this.longitude);
+      this.loadMap();
      }).catch((error) => {
        console.log(error);
      });
   }
-
-  ionViewDidLoad() {
-    this.loadMap();
-   }
  
   loadMap() {
      let mapOptions: GoogleMapOptions = {
